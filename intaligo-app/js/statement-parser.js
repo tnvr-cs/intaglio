@@ -36,10 +36,19 @@ const SKIP_LINE =
 
 const INCOME_LINE = /salary|wages|payroll|credit\s+transfer|refund|interest\s+paid/i;
 
+function keywordMatches(text, keyword) {
+  const lower = text.toLowerCase();
+  const kw = keyword.trim().toLowerCase();
+  if (!kw) return false;
+  if (kw.includes(' ')) return lower.includes(kw);
+  const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(lower);
+}
+
 function keywordCategorize(text) {
   const lower = text.toLowerCase();
   for (let i = 0; i < CATEGORY_KEYWORDS.length; i++) {
-    if (CATEGORY_KEYWORDS[i].some((kw) => lower.includes(kw))) return i;
+    if (CATEGORY_KEYWORDS[i].some((kw) => keywordMatches(lower, kw))) return i;
   }
   return CATEGORIES.length - 1;
 }

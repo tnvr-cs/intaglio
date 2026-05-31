@@ -357,17 +357,6 @@
   padding: 24px;
 }
 
-.scan-native-placeholder span {
-  font-size: 40px;
-  opacity: 0.85;
-}
-
-.scan-native-placeholder p {
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
-  max-width: 220px;
-}
 
 .scan-modal--native .scan-frame {
   display: none;
