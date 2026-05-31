@@ -40,3 +40,6 @@ export const PAL_COLORS = [
   'radial-gradient(circle,#d0ffd8,#1a7a40)',
   'radial-gradient(circle,#ffd0e8,#c0306a)',
 ];
+
+/** Inky Impression display server on the Pi (use IP if mDNS fails). */
+export const INKY_DISPLAY_URL = 'http://raspberrypi.local:5000/display';

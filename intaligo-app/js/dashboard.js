@@ -10,7 +10,7 @@ import {
   setShowMonthNeighbors,
   setHideVizLines,
 } from './state.js';
-import { exportPNG } from './export.js';
+import { exportPNG, exportToInky } from './export.js';
 import { getAnimState, setAnimTargets, onVizMonthChange } from './viz.js';
 import { animateValue, animateBar, pulseElement } from './counter.js';
 
@@ -156,6 +156,7 @@ function updateCompareLegend(visible) {
 
 export function initDashboard() {
   document.getElementById('btn-export-png')?.addEventListener('click', exportPNG);
+  document.getElementById('btn-export-inky')?.addEventListener('click', exportToInky);
 
   const chk = document.getElementById('chk-month-neighbors');
   chk?.addEventListener('change', () => {

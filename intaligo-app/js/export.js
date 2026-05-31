@@ -1,12 +1,49 @@
-import { MONTH_NAMES, CATEGORIES } from './config.js';
+import { MONTH_NAMES, CATEGORIES, INKY_DISPLAY_URL } from './config.js';
 import { getMonthData } from './data.js';
 import { currentUser, p5Inst } from './state.js';
 import { showToast } from './toast.js';
+
+const PORTRAIT_FILENAME = 'intaglio-portrait.png';
 
 export function exportPNG() {
   if (!p5Inst) return;
   p5Inst.saveCanvas('intaglio-portrait', 'png');
   showToast('PNG exported ✓');
+}
+
+export function exportToInky() {
+  const canvas = p5Inst?.canvas?.elt;
+  if (!canvas) return;
+
+  canvas.toBlob(async (blob) => {
+    if (!blob) {
+      showToast('Could not export image');
+      return;
+    }
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = PORTRAIT_FILENAME;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    const formData = new FormData();
+    formData.append('image', blob, PORTRAIT_FILENAME);
+
+    try {
+      const res = await fetch(INKY_DISPLAY_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await res.json();
+      showToast('Sent to Inky ✓');
+    } catch (err) {
+      console.error('Failed to send to Inky:', err);
+      showToast('Inky unreachable — PNG saved locally');
+    }
+  }, 'image/png');
 }
 
 export function exportCSV() {

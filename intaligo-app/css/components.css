@@ -68,6 +68,16 @@
   transform: translateY(-1px);
 }
 
+.export-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.export-actions .btn-export {
+  flex: 1;
+  min-width: 0;
+}
+
 .btn-export {
   width: 100%;
   padding: 11px;
