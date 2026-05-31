@@ -1,0 +1,175 @@
+#screen-onboarding {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--bg);
+  padding: 32px 24px 40px;
+  overflow-y: auto;
+}
+
+.onboarding-wrap {
+  width: 100%;
+  max-width: 720px;
+}
+
+.onboarding-top {
+  margin-bottom: 28px;
+}
+
+.onboarding-top h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.onboarding-top p {
+  font-size: 12px;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.onboarding-progress {
+  margin-bottom: 28px;
+}
+
+.onboarding-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.onboarding-progress-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.onboarding-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 3px;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.onboarding-month-badge {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(240, 192, 64, 0.45);
+  background: rgba(240, 192, 64, 0.08);
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.onboarding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.onboarding-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 28px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.onboarding-total strong {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.onboarding-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.onboarding-actions .btn-ghost,
+.onboarding-actions .btn-primary,
+.onboarding-actions .btn-save {
+  flex: 1;
+  min-width: 140px;
+}
+
+.onboarding-actions .btn-ghost--muted {
+  flex: 0 1 auto;
+  min-width: 100px;
+  opacity: 0.85;
+}
+
+.onboarding-complete {
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.onboarding-complete-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: rgba(107, 229, 160, 0.12);
+  border: 0.5px solid rgba(107, 229, 160, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6be5a0;
+  font-size: 24px;
+}
+
+.onboarding-complete h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+.onboarding-complete p {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.onboarding-step {
+  animation: onboardingIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes onboardingIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">intaglio</string>
+    <string name="title_activity_main">intaglio</string>
+    <string name="package_name">app.intaglio.mobile</string>
+    <string name="custom_url_scheme">app.intaglio.mobile</string>
+</resources>

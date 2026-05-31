@@ -1,0 +1,9 @@
+# users — email|password|name
+
+test@example.com|secret123|Test User
+test@test.com|password|test
+new@new.com|password|new
+new1@gmail.com|F8du4RydqQUfE4v|new1
+new2@gmail.com|F8du4RydqQUfE4v|new2
+new4@gmail.com|password|new4
+fred@email.com|asdasd|fred

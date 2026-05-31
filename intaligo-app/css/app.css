@@ -1,0 +1,134 @@
+#screen-app {
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 64px;
+  border-bottom: 0.5px solid var(--border);
+  flex-shrink: 0;
+  gap: 32px;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-right: auto;
+}
+
+.nav-brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 28px;
+  flex-shrink: 0;
+}
+
+.nav-logo-spin {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  animation: navLogoSpin 28s linear infinite;
+}
+
+.nav-logo-under,
+.nav-logo-over {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@keyframes navLogoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.nav-link {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text2);
+}
+
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0b0718;
+}
+
+.nav-logout {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 4px 10px;
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.nav-logout:hover {
+  color: var(--text);
+  border-color: var(--border2);
+}
+
+.app-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-title {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 12px;
+}

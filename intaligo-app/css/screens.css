@@ -1,0 +1,47 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(24px);
+  overflow: auto;
+  z-index: 1;
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+  z-index: 10;
+}
+
+.screen.exit {
+  opacity: 0;
+  transform: translateY(-24px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.pane {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(40px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
+}
+
+.pane.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+.pane.exit-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}

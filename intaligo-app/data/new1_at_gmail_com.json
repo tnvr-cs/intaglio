@@ -1,0 +1,216 @@
+{
+  "email": "new1@gmail.com",
+  "name": "new1",
+  "months": {
+    "0": [
+      {
+        "name": "Rent",
+        "val": 1350,
+        "max": 2000
+      },
+      {
+        "name": "Food",
+        "val": 532,
+        "max": 800
+      },
+      {
+        "name": "Transport",
+        "val": 144,
+        "max": 400
+      },
+      {
+        "name": "Shopping",
+        "val": 269,
+        "max": 600
+      },
+      {
+        "name": "Bills",
+        "val": 309,
+        "max": 500
+      },
+      {
+        "name": "Subscr.",
+        "val": 128,
+        "max": 200
+      },
+      {
+        "name": "Savings",
+        "val": 287,
+        "max": 1000
+      },
+      {
+        "name": "Other",
+        "val": 224,
+        "max": 400
+      }
+    ],
+    "1": [
+      {
+        "name": "Rent",
+        "val": 0,
+        "max": 2000
+      },
+      {
+        "name": "Food",
+        "val": 0,
+        "max": 800
+      },
+      {
+        "name": "Transport",
+        "val": 0,
+        "max": 400
+      },
+      {
+        "name": "Shopping",
+        "val": 0,
+        "max": 600
+      },
+      {
+        "name": "Bills",
+        "val": 0,
+        "max": 500
+      },
+      {
+        "name": "Subscr.",
+        "val": 0,
+        "max": 200
+      },
+      {
+        "name": "Savings",
+        "val": 0,
+        "max": 1000
+      },
+      {
+        "name": "Other",
+        "val": 0,
+        "max": 400
+      }
+    ],
+    "2": [
+      {
+        "name": "Rent",
+        "val": 0,
+        "max": 2000
+      },
+      {
+        "name": "Food",
+        "val": 0,
+        "max": 800
+      },
+      {
+        "name": "Transport",
+        "val": 0,
+        "max": 400
+      },
+      {
+        "name": "Shopping",
+        "val": 0,
+        "max": 600
+      },
+      {
+        "name": "Bills",
+        "val": 0,
+        "max": 500
+      },
+      {
+        "name": "Subscr.",
+        "val": 0,
+        "max": 200
+      },
+      {
+        "name": "Savings",
+        "val": 0,
+        "max": 1000
+      },
+      {
+        "name": "Other",
+        "val": 0,
+        "max": 400
+      }
+    ],
+    "3": [
+      {
+        "name": "Rent",
+        "val": 0,
+        "max": 2000
+      },
+      {
+        "name": "Food",
+        "val": 0,
+        "max": 800
+      },
+      {
+        "name": "Transport",
+        "val": 0,
+        "max": 400
+      },
+      {
+        "name": "Shopping",
+        "val": 0,
+        "max": 600
+      },
+      {
+        "name": "Bills",
+        "val": 0,
+        "max": 500
+      },
+      {
+        "name": "Subscr.",
+        "val": 0,
+        "max": 200
+      },
+      {
+        "name": "Savings",
+        "val": 0,
+        "max": 1000
+      },
+      {
+        "name": "Other",
+        "val": 0,
+        "max": 400
+      }
+    ],
+    "4": [
+      {
+        "name": "Rent",
+        "val": 0,
+        "max": 2000
+      },
+      {
+        "name": "Food",
+        "val": 0,
+        "max": 800
+      },
+      {
+        "name": "Transport",
+        "val": 0,
+        "max": 400
+      },
+      {
+        "name": "Shopping",
+        "val": 0,
+        "max": 600
+      },
+      {
+        "name": "Bills",
+        "val": 0,
+        "max": 500
+      },
+      {
+        "name": "Subscr.",
+        "val": 0,
+        "max": 200
+      },
+      {
+        "name": "Savings",
+        "val": 0,
+        "max": 1000
+      },
+      {
+        "name": "Other",
+        "val": 0,
+        "max": 400
+      }
+    ]
+  }
+}

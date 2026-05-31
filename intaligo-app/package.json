@@ -1,0 +1,25 @@
+{
+  "name": "intaglio-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "train:categories": "node scripts/train-category-model.cjs",
+    "build:www": "node scripts/copy-cap.cjs && node scripts/copy-www.cjs",
+    "cap:sync": "node scripts/copy-cap.cjs && npm run build:www && npx cap sync android && node scripts/patch-android.cjs",
+    "android:setup": "node scripts/copy-cap.cjs && npm run build:www && npx cap add android && node scripts/patch-android.cjs",
+    "android:open": "npm run cap:sync && npx cap open android",
+    "apk:debug": "npm run cap:sync && node scripts/build-apk.cjs debug",
+    "apk:release": "npm run cap:sync && node scripts/build-apk.cjs release",
+    "postinstall": "node scripts/copy-cap.cjs"
+  },
+  "dependencies": {
+    "@capacitor/camera": "^7.0.5",
+    "@capacitor/core": "^7.4.2",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/cli": "^7.4.2"
+  }
+}

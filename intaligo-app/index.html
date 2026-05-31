@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>intaglio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/splash.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/data.css">
+  <link rel="stylesheet" href="css/history.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/scanner.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "@capacitor/core": "./cap/core/index.js",
+      "@capacitor/camera": "./cap/camera/index.js"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div id="screen-splash" class="screen active">
+    <div class="splash-logo">intaglio<em>;</em></div>
+    <div class="splash-sub">monthly spending portfolio</div>
+    <div class="splash-enter">
+      <button id="btn-splash-enter" class="btn-primary btn-primary--narrow" type="button">Enter</button>
+    </div>
+  </div>
+
+  <div id="screen-auth" class="screen">
+    <div class="auth-card">
+      <div class="auth-logo">intaglio<em>;</em></div>
+      <div class="auth-tagline">monthly spending portfolio</div>
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-auth-tab="login">Sign In</div>
+        <div class="auth-tab" data-auth-tab="register">Create Account</div>
+      </div>
+      <div id="native-server-setup" class="native-server-setup" hidden>
+        <div class="field-group">
+          <div class="field-label">Server</div>
+          <input class="field-input" id="server-url" type="url" inputmode="url" autocomplete="off" placeholder="http://192.168.1.42:3000">
+          <p class="native-server-hint">Optional — use <strong>Continue offline</strong> with no server. Or PC on Wi‑Fi: <code>npm start</code>, then its IP.</p>
+        </div>
+      </div>
+      <div id="auth-error" class="auth-error"></div>
+      <div id="auth-form-login">
+        <div class="field-group">
+          <div class="field-label">Email</div>
+          <input class="field-input" id="login-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Password</div>
+          <input class="field-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button id="btn-login" class="btn-primary" type="button">Sign In</button>
+        <div class="auth-divider">or</div>
+        <div class="field-group">
+          <div class="field-label">Name (offline)</div>
+          <input class="field-input" id="offline-name" type="text" placeholder="Optional" autocomplete="name">
+        </div>
+        <button id="btn-offline" class="btn-ghost" type="button">Continue offline</button>
+        <p class="auth-offline-hint">Everything stays on this device. No server needed.</p>
+        <button id="btn-demo" class="btn-ghost btn-ghost--compact" type="button">Try demo data</button>
+      </div>
+      <div id="auth-form-register" class="auth-form-hidden">
+        <div class="field-group">
+          <div class="field-label">Name</div>
+          <input class="field-input" id="reg-name" type="text" placeholder="Your name" autocomplete="name">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Email</div>
+          <input class="field-input" id="reg-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Password</div>
+          <input class="field-input" id="reg-pass" type="password" placeholder="Min 6 characters" autocomplete="new-password">
+        </div>
+        <button id="btn-register" class="btn-primary" type="button">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-onboarding" class="screen">
+    <div class="onboarding-wrap">
+      <div class="onboarding-top">
+        <h2 id="onboarding-step-title">Add your months</h2>
+        <p id="onboarding-step-desc">Rough numbers are fine — you can fix them in Data later.</p>
+      </div>
+      <div class="onboarding-progress">
+        <div class="onboarding-progress-meta">
+          <span id="onboarding-progress-label">Step 1 of 1</span>
+        </div>
+        <div class="onboarding-progress-bar">
+          <div class="onboarding-progress-fill" id="onboarding-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <div id="onboarding-content"></div>
+    </div>
+  </div>
+
+  <div id="screen-app" class="screen">
+    <nav class="app-nav">
+      <div class="nav-tabs">
+        <div class="nav-link active" data-pane="dashboard">Portrait</div>
+        <div class="nav-link" data-pane="data">Data</div>
+        <div class="nav-link" data-pane="history">History</div>
+      </div>
+      <div class="nav-brand-mark">
+        <div class="nav-logo-spin" id="nav-logo-spin" aria-hidden="true">
+          <img class="nav-logo-under" id="nav-logo-under" alt="">
+          <img class="nav-logo-over" id="nav-logo-over" alt="">
+        </div>
+        <div class="nav-logo">intaglio<em>;</em></div>
+      </div>
+      <div class="nav-user">
+        <div class="nav-avatar" id="nav-avatar">?</div>
+        <span id="nav-username">User</span>
+        <div class="nav-logout" id="btn-logout">Sign Out</div>
+      </div>
+    </nav>
+    <div class="app-body">
+
+      <div id="pane-dashboard" class="pane active">
+        <div class="dash-left">
+          <div>
+            <div class="section-title">Month</div>
+            <div class="month-grid" id="month-grid"></div>
+            <label class="month-overlay">
+              <input type="checkbox" id="chk-month-neighbors">
+              <span>Overlay prev / next month</span>
+            </label>
+            <label class="month-overlay">
+              <input type="checkbox" id="chk-hide-viz-lines">
+              <span>Hide lines</span>
+            </label>
+            <div class="month-overlay-legend month-overlay-legend--hidden" id="viz-compare-legend">
+              <span class="month-overlay-legend-prev">Previous</span>
+              <span class="month-overlay-legend-next">Next</span>
+            </div>
+          </div>
+          <div>
+            <div class="section-title">Palette</div>
+            <div class="palette-strip" id="palette-strip"></div>
+          </div>
+          <div>
+            <div class="section-title">Summary</div>
+            <div class="stat-cards" id="stat-cards"></div>
+          </div>
+          <div>
+            <div class="section-title">Breakdown</div>
+            <div class="cat-list" id="cat-list"></div>
+          </div>
+          <div>
+            <button id="btn-export-png" class="btn-export" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
+              Export PNG
+            </button>
+          </div>
+        </div>
+        <div class="dash-right">
+          <div id="viz-canvas-wrap"></div>
+        </div>
+      </div>
+
+      <div id="pane-data" class="pane">
+        <div class="data-header">
+          <h2>Data Entry</h2>
+          <p>Numbers per category, or scan a paper statement</p>
+        </div>
+        <div class="data-scan-bar">
+          <button id="btn-scan-statement" class="btn-scan" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2M4 7h16M4 7l-1 12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2l-1-12M12 11v4M9 14h6"/></svg>
+            Scan Statement
+          </button>
+          <span class="data-scan-hint">Camera or upload — we'll guess categories from the text.</span>
+        </div>
+        <div class="data-month-select" id="data-month-select"></div>
+        <div class="data-grid" id="data-grid"></div>
+        <div class="data-actions">
+          <button id="btn-save-data" class="btn-save" type="button">Save Month</button>
+          <div class="save-confirm" id="save-confirm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Saved
+          </div>
+        </div>
+      </div>
+
+      <div id="pane-history" class="pane">
+        <div class="history-header">
+          <h2>Spending History</h2>
+          <p>All months in one table</p>
+        </div>
+        <div class="export-bar">
+          <button id="btn-export-csv" class="btn-exp-small" type="button">Export CSV</button>
+          <button id="btn-export-json" class="btn-exp-small" type="button">Export JSON</button>
+        </div>
+        <div id="history-body"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <div id="scan-modal" class="scan-modal" aria-hidden="true" data-scan-dismiss>
+    <div class="scan-panel" role="dialog" aria-labelledby="scan-title">
+      <div class="scan-header">
+        <h3 id="scan-title">Scan bank statement</h3>
+        <button id="btn-scan-close" class="scan-close" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="scan-body">
+        <div class="scan-step scan-step--active" data-scan-step="capture">
+          <div class="scan-viewport">
+            <div id="scan-native-placeholder" class="scan-native-placeholder" hidden>
+              <span>📷</span>
+              <p>Take a photo of your statement</p>
+            </div>
+            <video id="scan-video" playsinline muted autoplay></video>
+            <img id="scan-preview-img" class="scan-preview-hidden" alt="Captured statement">
+            <div class="scan-frame" aria-hidden="true"></div>
+          </div>
+          <p id="scan-status" class="scan-status">Align your statement inside the frame</p>
+          <div class="scan-actions">
+            <div class="scan-actions-row">
+              <button id="btn-scan-capture" class="btn-primary" type="button">Capture</button>
+              <button id="btn-scan-gallery" class="btn-ghost scan-gallery-btn" type="button" hidden>Choose from gallery</button>
+            </div>
+            <label class="scan-file-label scan-file-label--web">
+              Upload photo instead
+              <input id="scan-file-input" type="file" accept="image/*" capture="environment">
+            </label>
+          </div>
+        </div>
+        <div class="scan-step" data-scan-step="processing">
+          <div class="scan-processing">
+            <div class="spinner"></div>
+            <p id="scan-status-processing" class="scan-status">Reading statement…</p>
+          </div>
+        </div>
+        <div class="scan-step" data-scan-step="review">
+          <div class="scan-viewport" style="max-height:140px;aspect-ratio:16/9;margin-bottom:16px">
+            <img id="scan-preview-review" class="scan-preview-hidden" alt="Scanned statement">
+          </div>
+          <p id="scan-review-total" class="scan-review-total"></p>
+          <div id="scan-category-summary" class="scan-category-summary"></div>
+          <div id="scan-tx-list" class="scan-tx-list"></div>
+          <div class="scan-actions">
+            <div class="scan-actions-row">
+              <button id="btn-scan-apply" class="btn-primary" type="button" disabled>Apply to month</button>
+              <button id="btn-scan-retake" class="btn-ghost" type="button">Retake</button>
+            </div>
+          </div>
+          <p class="scan-disclaimer">Check categories before applying — fixes help the auto-sort get better next time.</p>
+        </div>
+      </div>
+      <canvas id="scan-capture-canvas" hidden></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
