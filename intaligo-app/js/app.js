@@ -19,7 +19,6 @@ import { buildDataEntry, buildDataMonthSelect } from './data-entry.js';
 import { updateHistory } from './history.js';
 import { initViz } from './viz.js';
 import { resetVizAssets } from './viz-assets.js';
-import { initNavLogo, syncNavLogoForMonth } from './nav-logo.js';
 
 export async function launchApp(options = {}) {
   if (isOfflineUser()) {
@@ -52,7 +51,6 @@ export async function launchApp(options = {}) {
 
   setTimeout(() => {
     initViz();
-    syncNavLogoForMonth();
     updateDashSidebar();
     updateHistory();
     requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
@@ -75,7 +73,6 @@ export function doLogout() {
 }
 
 export function initAppNav() {
-  initNavLogo();
   document.querySelectorAll('[data-pane]').forEach((link) => {
     link.addEventListener('click', () => {
       switchPane(link.dataset.pane, link, (id) => {

@@ -20,7 +20,6 @@ import {
   tickTransition,
   triggerMonthTransition,
 } from './viz-assets.js';
-import { syncNavLogoForMonth } from './nav-logo.js';
 
 let currentMD = [];
 let targetMD = [];
@@ -41,14 +40,12 @@ export function setAnimTargets(fromMD, toMD) {
   isLooping = true;
   if (toMD?.length) {
     updateAssetForData(currentMonth, toMD);
-    syncNavLogoForMonth(currentMonth);
   }
 }
 
 export function onVizMonthChange(monthIndex) {
   const monthData = getMonthData(currentUser.uid, monthIndex);
   triggerMonthTransition(monthIndex, monthData);
-  syncNavLogoForMonth(monthIndex);
   if (p5Inst) p5Inst.loop();
 }
 

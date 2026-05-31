@@ -51,13 +51,7 @@
   }
 
   .nav-brand-mark {
-    gap: 8px;
     margin-right: 10px;
-  }
-
-  .nav-logo-spin {
-    width: 30px;
-    height: 30px;
   }
 
   .nav-tabs {
