@@ -43,3 +43,6 @@ export const PAL_COLORS = [
 
 /** Inky Impression display server on the Pi (use IP if mDNS fails). */
 export const INKY_DISPLAY_URL = 'http://raspberrypi.local:5000/display';
+
+/** Nav logo asset pair (assets/underlayer & overlayer). */
+export const LOGO_ASSET_INDEX = 5;
