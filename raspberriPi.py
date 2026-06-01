@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from PIL import Image
-from inky.auto import auto
+from inky import InkyImpression
 import io
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ def display_image():
     file = request.files['image']
     img = Image.open(file.stream)
 
-    inky = auto()  
+    inky = InkyImpression(7.3)
     img = img.resize(inky.resolution) 
     inky.set_image(img, saturation=0.5)
     inky.show()
