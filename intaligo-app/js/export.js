@@ -17,21 +17,27 @@ function getVizCanvas() {
 }
 
 export function exportToInky() {
+  console.log('exportToInky called');
+
   if (!p5Inst) {
+    console.log('no p5Inst');
     showToast('Visualization not ready');
     return;
   }
 
   const canvas = getVizCanvas();
+  console.log('canvas:', canvas);
   if (!canvas) {
+    console.log('no canvas');
     showToast('Could not export image');
     return;
   }
 
-  // saveCanvas must run in the click handler (user gesture); async toBlob breaks downloads.
   p5Inst.saveCanvas(PORTRAIT_FILENAME.replace(/\.png$/i, ''), 'png');
 
+  console.log('calling toBlob...');
   canvas.toBlob(async (blob) => {
+    console.log('blob:', blob);
     if (!blob) {
       showToast('Could not export image');
       return;
@@ -40,11 +46,13 @@ export function exportToInky() {
     const formData = new FormData();
     formData.append('image', blob, PORTRAIT_FILENAME);
 
+    console.log('fetching:', "http://192.168.0.61:5000/display");
     try {
-      const res = await fetch(INKY_DISPLAY_URL, {
+      const res = await fetch("http://192.168.0.61:5000/display", {
         method: 'POST',
         body: formData,
       });
+      console.log('response status:', res.status);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       await res.json();
       showToast('Sent to Inky ✓');
