@@ -52,6 +52,7 @@ export function assetIndexForDataShape(monthData) {
     norms.reduce((s, n) => s + (n - mean) ** 2, 0) / norms.length,
   );
 
+  // Flat month → default dress in the middle.
   if (range <= 0.12 || stdDev <= 0.06) return 2;
 
   const regions = [

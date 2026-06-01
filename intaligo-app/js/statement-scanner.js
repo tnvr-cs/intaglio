@@ -19,6 +19,7 @@ function loadTesseract() {
   return tesseractPromise;
 }
 
+// Bump contrast so Tesseract can read the text more easily.
 function preprocessImage(sourceCanvas) {
   const w = sourceCanvas.width;
   const h = sourceCanvas.height;

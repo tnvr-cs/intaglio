@@ -36,6 +36,7 @@ function init() {
 async function loadSessionAndLaunch() {
   const { currentUser } = await import('./state.js');
   resetDataState();
+
   if (isOfflineUser()) {
     await loadOfflineUserData();
     if (needsOnboarding()) {
@@ -49,6 +50,7 @@ async function loadSessionAndLaunch() {
       return;
     }
   }
+
   launchApp();
 }
 

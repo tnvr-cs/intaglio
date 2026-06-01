@@ -184,9 +184,7 @@ export async function recordCategoryFeedback(description, categoryIndex) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(entry),
     });
-  } catch {
-    /* saved locally */
-  }
+  } catch { /* local only */ }
 }
 
 export function isModelReady() {

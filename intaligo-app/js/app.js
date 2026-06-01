@@ -49,6 +49,7 @@ export async function launchApp(options = {}) {
   buildDataMonthSelect();
   goTo('app');
 
+  // Wait a beat so the layout has settled before starting p5.
   setTimeout(() => {
     initViz();
     updateDashSidebar();

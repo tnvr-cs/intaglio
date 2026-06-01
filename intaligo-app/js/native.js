@@ -5,6 +5,7 @@ export function initNativeShell() {
 
   document.body.classList.add('is-native');
 
+  // Show the box where you paste your PC's http://...:3000 address.
   const block = document.getElementById('native-server-setup');
   const input = document.getElementById('server-url');
   if (!block || !input) return;

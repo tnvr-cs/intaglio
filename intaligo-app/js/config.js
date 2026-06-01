@@ -8,7 +8,7 @@ export const MONTH_SHORT = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
-export const VIZ_MIN_NORM = 0.35;
+export const VIZ_MIN_NORM = 0.35; // min skirt radius so empty months still look like a dress
 
 export const CATEGORIES = [
   { name: 'Rent', icon: 'assets/icons/house.png', color: '#e88c3a', max: 2000, base: 1100 },
@@ -41,5 +41,4 @@ export const PAL_COLORS = [
   'radial-gradient(circle,#ffd0e8,#c0306a)',
 ];
 
-/** Inky Impression display server on the Pi (use IP if mDNS fails). */
-export const INKY_DISPLAY_URL = 'http://raspberrypi.local:5000/display';
+export const INKY_DISPLAY_URL = 'http://raspberrypi.local:5000/display'; // change to Pi IP if needed

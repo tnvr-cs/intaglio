@@ -172,6 +172,7 @@ export function startOnboarding() {
   monthSteps = getOnboardingMonths();
   stepIndex = 0;
 
+  // Brand new user in January — still give them one step.
   if (!monthSteps.length) {
     monthSteps = [{ month: new Date().getMonth(), year: new Date().getFullYear(), label: MONTH_NAMES[new Date().getMonth()] }];
   }

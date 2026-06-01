@@ -13,7 +13,7 @@ const MERCHANTS = [
   ['netflix subscription', 'netflix.com', 'spotify premium', 'spotify.com', 'disney plus', 'disneyplus', 'apple.com bill', 'google storage', 'adobe creative', 'microsoft 365', 'puregym membership', 'gym group', 'audible', 'youtube premium', 'dropbox plus', 'amazon prime video', 'playstation plus', 'xbox game pass', 'canva pro', 'now tv', 'paramount plus'],
   // Savings
   ['transfer to savings', 'isa deposit', 'premium bonds', 'vanguard invest', 'nutmeg savings', 'monzo pot', 'starling spaces', 'chip savings'],
-  // Other (misc)
+  // Other
   ['cash withdrawal', 'atm withdrawal', 'foreign exchange', 'charity donation', 'post office', 'paypal transfer', 'wise transfer', 'monzo split', 'unknown merchant', 'general purchase'],
 ];
 

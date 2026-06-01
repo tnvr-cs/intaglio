@@ -31,6 +31,7 @@ const CATEGORY_KEYWORDS = [
   ['savings', 'isa', 'premium bonds', 'vanguard', 'nutmeg', 'transfer to save'],
 ];
 
+// Lines we should ignore (headers, balances, page numbers, etc.).
 const SKIP_LINE =
   /balance\s+brought|opening\s+balance|closing\s+balance|statement\s+period|page\s+\d|account\s+number|sort\s+code|continued|subtotal|total\s+paid|total\s+received|arranged\s+overdraft|available\s+balance/i;
 

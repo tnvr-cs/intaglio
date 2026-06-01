@@ -12,7 +12,7 @@ export function setServerBase(url) {
   else localStorage.removeItem('intaglio_server_url');
 }
 
-/** API paths on the PC/server; static files stay relative in the APK. */
+// On the phone app, /api/* goes to the PC URL you saved; in the browser it's same-origin.
 export function apiUrl(path) {
   const p = path.startsWith('/') ? path : `/${path}`;
   if (!p.startsWith('/api')) return p;

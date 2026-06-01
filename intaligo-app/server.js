@@ -1,3 +1,6 @@
+// Simple Node server: login, save spending data, collect ML feedback.
+// Run with: node server.js  (listens on port 3000)
+
 const express = require('express');
 const fs = require('fs');
 const os = require('os');
@@ -22,6 +25,7 @@ app.get('/intaglio-app.html', (req, res) => {
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
+// users.txt format: email|password|name  (lines starting with # are ignored)
 function readUsers() {
   if (!fs.existsSync(USERS_FILE)) return [];
   const raw = fs.readFileSync(USERS_FILE, 'utf8');

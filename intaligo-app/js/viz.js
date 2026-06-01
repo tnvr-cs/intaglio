@@ -119,6 +119,7 @@ export function initViz() {
       return (i / N) * p.TWO_PI - p.HALF_PI;
     }
 
+    // Stretch the skirt panels so it reads like fabric, not a plain pie chart.
     function dressScale(angle) {
       const vy = Math.sin(angle);
       const absVx = Math.abs(Math.cos(angle));
