@@ -11,22 +11,31 @@ export function exportPNG() {
   showToast('PNG exported ✓');
 }
 
+function getVizCanvas() {
+  if (!p5Inst) return null;
+  return p5Inst.canvas?.elt ?? p5Inst.drawingContext?.canvas ?? null;
+}
+
 export function exportToInky() {
-  const canvas = p5Inst?.canvas?.elt;
-  if (!canvas) return;
+  if (!p5Inst) {
+    showToast('Visualization not ready');
+    return;
+  }
+
+  const canvas = getVizCanvas();
+  if (!canvas) {
+    showToast('Could not export image');
+    return;
+  }
+
+  // saveCanvas must run in the click handler (user gesture); async toBlob breaks downloads.
+  p5Inst.saveCanvas(PORTRAIT_FILENAME.replace(/\.png$/i, ''), 'png');
 
   canvas.toBlob(async (blob) => {
     if (!blob) {
       showToast('Could not export image');
       return;
     }
-
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = PORTRAIT_FILENAME;
-    a.click();
-    URL.revokeObjectURL(url);
 
     const formData = new FormData();
     formData.append('image', blob, PORTRAIT_FILENAME);
